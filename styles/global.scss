@@ -1,0 +1,44 @@
+$primary-500: #CA2627;
+$primary-700: #611311;
+
+$secondary-500: #ECA442;
+$tertiary-500: #A5A79A;
+
+:root {
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: $tertiary-500;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  min-height: 100vh;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: $primary-700;
+  color: $tertiary-500;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: $primary-500;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
