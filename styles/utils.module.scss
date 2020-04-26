@@ -1,3 +1,5 @@
+@import './mixins';
+
 .heading2Xl {
   font-size: 2.5rem;
   line-height: 1.2;
@@ -42,8 +44,16 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 1rem;
+
+  @media (max-width: $small-breakpoint) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media (min-width: $small-breakpoint) and (max-width: $medium-breakpoint) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .list {
@@ -53,6 +63,23 @@
   background-color: white;
   border-radius: 8px;
   overflow: hidden;
+}
+
+.cardMedia {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-top: 66.666%;
+  }
+}
+
+.cardPrimary {
+  padding: 1rem;
 }
 
 .lightText {

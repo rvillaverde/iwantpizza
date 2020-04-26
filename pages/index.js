@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import Layout, { siteTitle } from '../components/layout'
-import { getProducts } from '../lib/products'
 import utilStyles from '../styles/utils.module.scss'
-
+import fetch from 'node-fetch'
 
 export default function Home({ products }) {
   return (
@@ -13,14 +12,16 @@ export default function Home({ products }) {
           <ul className={utilStyles.cardWrapper}>
             {products.map(({ id, name, description, photo_url }) => (
               <li className={utilStyles.card} key={id}>
-                <img src={photo_url}></img>
-                <Link href="/products/[id]" as={`/products/${id}`}>
-                  <a>{ name }</a>
-                </Link>
-                <br />
-                <small className={utilStyles.lightText}>
-                  <p>{ description }</p>
-                </small>
+                <div className={utilStyles.cardMedia} style={{ backgroundImage: `url(${photo_url})` }}></div>
+                <div className={utilStyles.cardPrimary}>
+                  <Link href="/products/[id]" as={`/products/${id}`}>
+                    <a>{ name }</a>
+                  </Link>
+                  <br />
+                  <small className={utilStyles.lightText}>
+                    <p>{ description }</p>
+                  </small>
+                </div>
               </li>
             ))}
           </ul>
@@ -31,7 +32,9 @@ export default function Home({ products }) {
 }
 
 export async function getServerSideProps() {
-  const products = JSON.parse(await getProducts())
+  //const products = JSON.parse(await getProducts())
+  const res = await fetch('https://iwantpizzaapi.herokuapp.com/products')
+  const products = await res.json()
   return {
     props: {
       products
