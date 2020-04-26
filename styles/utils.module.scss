@@ -37,14 +37,22 @@
   padding-top: 1px;
 }
 
-.list {
+.cardWrapper {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-gap: 1rem;
 }
 
-.listItem {
-  margin: 0 0 1.25rem;
+.list {
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .lightText {
