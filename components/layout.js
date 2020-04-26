@@ -26,7 +26,7 @@ export default function Layout({ children, home }) {
           <a>
             <img
               src="/images/logo.svg"
-              className={`${styles.headerImage}`}
+              className={styles.headerImage}
               alt={name}
             />
           </a>

@@ -1,0 +1,26 @@
+@import '../styles/mixins';
+
+.basicButton {
+  background-color: $primary-500;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: block;
+  width: fit-content;
+}
+
+.smallButton {
+  font-size: 0.6em;
+  letter-spacing: 0.08rem;
+  padding: 0.6rem 1rem;
+}
+
+.mediumButton {
+  font-size: 0.8rem;
+  letter-spacing: 0.2rem;
+  padding: 0.6rem 2rem;
+}
+
+.basicButton:hover {
+  text-decoration: none;
+}
