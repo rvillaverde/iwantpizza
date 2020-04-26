@@ -10,7 +10,9 @@ export default function Post({ product }) {
       <Head>
         <title>{product.name}</title>
       </Head>
-      <Product product={product}></Product>
+      <div className={utilStyles.container}>
+        <Product product={product}></Product>
+      </div>
     </Layout>
   )
 }

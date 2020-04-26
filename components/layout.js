@@ -26,7 +26,7 @@ export default function Layout({ children, home }) {
         <Logo name={name} home={home}></Logo>
       </header>
 
-      <main className={styles.container}>{children}</main>
+      <main>{children}</main>
 
       <footer>
         <p>©2020 - I WANT PIZZA</p>

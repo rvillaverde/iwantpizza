@@ -15,6 +15,10 @@
   @media (min-width: $small-breakpoint) and (max-width: $medium-breakpoint) {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  @media (min-width: $medium-breakpoint) and (max-width: $large-breakpoint) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .card {

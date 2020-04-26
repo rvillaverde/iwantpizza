@@ -1,5 +1,11 @@
 @import './mixins';
 
+.container {
+  max-width: $viewport-width;
+  padding: 0 1rem;
+  margin: 2rem auto;
+}
+
 .heading2Xl {
   font-size: 2.5rem;
   line-height: 1.2;
@@ -41,4 +47,39 @@
 
 .lightText {
   color: #999;
+}
+
+.mainHeadingWrapper {
+  min-height: 280px;
+  padding: 1rem;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.mainHeadingWrapper::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  background-color: $primary-700;
+  opacity: 0.5;
+}
+
+.mainHeading {
+  color: $secondary-500;
+  font-size: 4rem;
+  position: relative;
+  text-align: center;
+  text-shadow: 2px 2px 0 $primary-700;
+
+  @media (max-width: $medium-breakpoint) {
+    font-size: 3rem;
+  }
 }

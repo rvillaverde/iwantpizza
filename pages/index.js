@@ -8,9 +8,11 @@ import cardStyles from '../styles/cards.module.scss'
 export default function Home({ products }) {
   return (
     <Layout home>
-      <div className="container">
+      <div className={utilStyles.mainHeadingWrapper} style={{ backgroundImage: "url('/images/pizza-background.jpg')" }}>
+        <h2 className={utilStyles.mainHeading}>Check out our pizzas!</h2>
+      </div>
+      <div className={utilStyles.container}>
         <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-          <h2 className={utilStyles.headingLg}>Check out our pizzas!</h2>
           <ul className={cardStyles.cardWrapper}>
             {products.map(product => (
               <ProductCard product={product} key={product.id}/>
