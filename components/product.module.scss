@@ -1,10 +1,11 @@
 @import '../styles/mixins';
 
 .productWrapper {
-  display: flex;
   background-color: white;
+  display: flex;
   border-radius: 1rem;
   overflow: hidden;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
 
   @media (max-width: $medium-breakpoint) {
     flex-direction: column;
@@ -12,17 +13,17 @@
 }
 
 .productImage {
-  width: 50%;
   background-position: center;
-  background-size: cover;
   background-repeat: no-repeat;
+  background-size: cover;
+  width: 50%;
 }
 
 .productImage::before {
   content: "";
   display: block;
-  width: 100%;
   padding-top: 75%;
+  width: 100%;
 }
 
 .productInfo {

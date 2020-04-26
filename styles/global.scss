@@ -10,6 +10,7 @@ body {
   padding: 0;
   position: relative;
   min-height: 100vh;
+  padding-top: $header-height;
   padding-bottom: $footer-height;
 }
 
@@ -20,7 +21,7 @@ footer {
   align-items: center;
   bottom: 0;
   width: 100%;
-  padding: 0 2rem;
+  padding: 0 1rem;
   background-color: $primary-700;
   color: $tertiary-500;
 }

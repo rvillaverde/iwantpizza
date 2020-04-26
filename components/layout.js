@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import Logo from './logo'
+import AppHeader from './appHeader'
 
 import styles from './layout.module.scss'
 import utilStyles from '../styles/utils.module.scss'
@@ -22,10 +22,8 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
-        <Logo name={name} home={home}></Logo>
-      </header>
-
+        
+      <AppHeader name={name} home={home}></AppHeader>
       <main>{children}</main>
 
       <footer>
