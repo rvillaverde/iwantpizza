@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Logo from './logo'
 
 import styles from './layout.module.scss'
 import utilStyles from '../styles/utils.module.scss'
@@ -22,15 +23,7 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
-        <Link href="/">
-          <a>
-            <img
-              src="/images/logo.svg"
-              className={styles.headerImage}
-              alt={name}
-            />
-          </a>
-        </Link>
+        <Logo name={name} home={home}></Logo>
       </header>
 
       <main className={styles.container}>{children}</main>
