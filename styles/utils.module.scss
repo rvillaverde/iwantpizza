@@ -25,7 +25,7 @@
 .headingLg {
   font-size: 1.5rem;
   line-height: 1.4;
-  margin: 1rem 0;
+  margin: 0;
 }
 
 .headingMd {
@@ -39,6 +39,14 @@
 
 .colorInherit {
   color: inherit;
+}
+
+.colorPrimary500 {
+  color: $primary-500;
+}
+
+.colorPrimary700 {
+  color: $primary-700;
 }
 
 .padding1px {

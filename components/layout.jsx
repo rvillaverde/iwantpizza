@@ -33,6 +33,7 @@ export default function Layout({ children, home }) {
       <style jsx global>{`
         html,
         body {
+          font-size: 16px;
           margin: 0;
         }
       `}</style>

@@ -15,9 +15,7 @@ import cardStyles from '../styles/cards.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 
 const StyledPrice = styled(Price)`
-  display: block;
-  font-size: 2rem;
-  margin: 1rem 0;
+  color: #999;
 `;
 
 class Product extends React.Component {
@@ -32,6 +30,13 @@ class Product extends React.Component {
   render() {
     return (
       <table className={styles.cartTable}>
+        <thead>
+          <tr>
+            <td colSpan='6'>
+              <h2 className={`${utilStyles.headingLg} ${utilStyles.colorPrimary700}`}>Shopping cart</h2>
+            </td>
+          </tr>
+        </thead>
         <tbody>
           {this.props.products.map(product => (
             <tr key={product.id}>
@@ -51,30 +56,40 @@ class Product extends React.Component {
                 <p className={`${utilStyles.lightText} ${productStyles.productDescription}`}>{product.description}</p>
               </td>
               <td>
-                <Price product={product} />
+                <StyledPrice product={product} />
               </td>
               <td width="10%">
                 <input type="number" defaultValue={product.quantity} className={styles.productQuantity}
                   onBlur={(e) => this.updateProductQuantity({ id: product.id, quantity: e.target.value })} />
               </td>
               <td>
-                <Price product={product} total />
+                <Price className={utilStyles.lightText} product={product} total />
               </td>
               <td width="5%">
-                <Button size="small" onClick={() => this.props.deleteCartItem(product.id) }>
+                <Button size="small" icon onClick={() => this.props.deleteCartItem(product.id) }>
                   <DeleteIcon />
                 </Button>
               </td>
             </tr>
           ))}
         </tbody>
+        <tfoot>
+          <tr>
+            <td colSpan='4'>
+              <p className={`${utilStyles.headingMd} ${utilStyles.colorPrimary700}`}>Subtotal</p>
+            </td>
+            <td colSpan='2'>
+              <Price className={utilStyles.lightText} product={{price: this.props.subtotal}} />
+            </td>
+          </tr>
+        </tfoot>
       </table>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  counter: state.cart
+  subtotal: state.cart.items.reduce((total, item) => (total + item.price * item.quantity), 0)
 });
 
 const mapDispatchToProps= (dispatch) => {
