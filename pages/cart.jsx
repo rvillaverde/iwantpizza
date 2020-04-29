@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {addedToCart} from '../redux/actions/cartActions';
+import {addedToCart, updateCartItem, deleteCartItem} from '../redux/actions/cartActions';
 
 import Layout from '../components/layout'
 import CartTable from '../components/cartTable'
@@ -32,7 +32,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  addedToCart: addedToCart
+  addedToCart: addedToCart,
+  updateCartItem: updateCartItem,
+  deleteCartItem: deleteCartItem
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

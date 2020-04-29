@@ -32,7 +32,9 @@ class Product extends React.Component {
         <h1 className={styles.productTitle}>{product.name}</h1>
         <p className={`${utilStyles.lightText} ${styles.productDescription}`}>{product.description}</p>
         <StyledPrice product={product} />
-        <Button label='Add to cart' size="medium" onClick={() => this.props.addToCart({id: product.id}) } />
+        <Button label='Add to cart' size="medium" onClick={() => this.props.addToCart(product.id) }>
+          Add to cart
+        </Button>
       </div>
     </div>
     );

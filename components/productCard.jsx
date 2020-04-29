@@ -53,7 +53,9 @@ class ProductCard extends React.Component {
         </Link>
         <div className={cardStyles.cardActions}>
           <Price product={product} />
-          <Button label='Add to cart' size="small" onClick={() => this.props.addToCart({id: product.id}) }/>
+          <Button size="small" onClick={() => this.props.addToCart(product.id) }>
+            Add to cart
+          </Button>
         </div>
       </li>
     );

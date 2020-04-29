@@ -1,14 +1,27 @@
 @import '../styles/mixins';
 
 .cartTable {
+  border-collapse: collapse;
   padding: 1rem;
   width: 100%;
 
+  tr:not(:last-child) {
+    border-bottom: 1px solid $border-color;
+  }
+
   tr > td {
-    padding: 1rem 0;
+    padding: 1rem .5rem;
+
+    p {
+      margin: 0;
+    }
 
     &:first-child {
       padding-left: 1rem;
+    }
+
+    &:nth-child(2) {
+      padding: 1rem;
     }
 
     &:last-child {
@@ -19,15 +32,26 @@
   @media (max-width: $medium-breakpoint) {
     padding: .4rem;
   
+    tr {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
     tr > td {
-      padding: .4rem 0;
+      padding: 1rem;
+      width: unset;
   
-      &:first-child {
-        padding-left: .4rem;
+      &:nth-child(2) {
+        flex-grow: 1;
+        max-width: calc(100% - 6rem);
+        padding-left: 0;
+        width: 100%;
       }
-  
-      &:last-child {
-        padding-right: .4rem;
+
+      &:nth-child(4) {
+        margin-left: auto;
+        padding: 1rem 0;
       }
     }
   }
@@ -55,4 +79,12 @@
   height: 100%;
   max-width: unset;
   width: auto;
+}
+
+.productQuantity {
+  width: 4rem;
+
+  @media (max-width: $small-breakpoint) {
+    width: 3rem;
+  }
 }
