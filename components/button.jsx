@@ -7,10 +7,17 @@ const sizes = {
   large: styles.largeButton
 }
 
-export default function Button({ href, label, size }) {
-  return (
-    <Link href="[href]" as={href}>
-      <a className={`${styles.basicButton} ${sizes[size]}`}>{label}</a>
-    </Link>
-  )
+export default function Button({ href, label, size, onClick }) {
+  if (href) {
+    return (
+      <Link href="[href]" as={href}>
+        <a className={`${styles.basicButton} ${sizes[size]}`}>{label}</a>
+      </Link>
+    )
+  } else {
+      return (
+        <a className={`${styles.basicButton} ${sizes[size]}`} onClick={onClick}>{label}</a>
+      )
+    
+  }
 }

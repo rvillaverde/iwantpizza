@@ -1,0 +1,58 @@
+@import '../styles/mixins';
+
+.cartTable {
+  padding: 1rem;
+  width: 100%;
+
+  tr > td {
+    padding: 1rem 0;
+
+    &:first-child {
+      padding-left: 1rem;
+    }
+
+    &:last-child {
+      padding-right: 1rem;
+    }
+  }
+
+  @media (max-width: $medium-breakpoint) {
+    padding: .4rem;
+  
+    tr > td {
+      padding: .4rem 0;
+  
+      &:first-child {
+        padding-left: .4rem;
+      }
+  
+      &:last-child {
+        padding-right: .4rem;
+      }
+    }
+  }
+}
+
+.thumb {
+  $size: 6rem;
+  height: $size;
+  min-width: $size;
+  width: $size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  
+  @media (max-width: $medium-breakpoint) {
+    $size: 4rem;
+    height: $size;
+    min-width: $size;
+    width: $size;
+  }
+}
+
+.tumbImage {
+  height: 100%;
+  max-width: unset;
+  width: auto;
+}

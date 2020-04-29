@@ -22,3 +22,31 @@
 .rightSection {
   margin-left: auto;
 }
+
+.cartLink {
+  color:white;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: .2rem .4rem;
+  
+  &::after {
+    align-items: center;
+    background-color: $primary-700;
+    border-radius: 50%;
+    bottom: 0;
+    content: attr(data-quantity);
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    font-size: .8rem;
+    font-weight: 500;
+    position: absolute;
+    right: 0;
+    width: 20px;
+  }
+  
+  &[data-quantity='0']::after {
+    content: unset;
+  }
+}

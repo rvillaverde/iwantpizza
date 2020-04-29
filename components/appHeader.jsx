@@ -18,20 +18,48 @@ const CartIcon = () =>
       C14.5,20,13.9,20.5,13.9,21.2z"/>
   </svg>;
 
-export default function AppHeader({ home, name }) {
-  return (
-    <header className={styles.header}>
+import React from 'react';
+import {connect} from 'react-redux';
+import {addedToCart} from '../redux/actions/cartActions';
+
+class AppHeader extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <header className={styles.header}>
       <nav className={styles.appNav}>
         <div className={styles.rightSection}>
-          <Link href="/">
-            <a >
+          <Link href="/cart" as={'/cart'}>
+            <a className={styles.cartLink} data-quantity={this.props.counter}>
               <i className={styles.icon}><CartIcon /></i>
             </a>
           </Link>
         </div>
       </nav>
-      <Logo name={name} home={home}></Logo>
+      <Logo name={this.name} home={this.home}></Logo>
     </header>
-  )
+    );
+  }
 }
+
+const mapStateToProps = function(state) {
+  return {
+    items: state.cart.items,
+    counter: Object.keys(state.cart.items).length
+  }
+}
+
+const mapDispatchToProps = {
+  addedToCart: addedToCart
+};
+// const mapDispatchToProps = (dispatch)=>{
+//   return {
+//     addedToCart: (id)=>{dispatch(addedToCart(id))}
+//   }
+// }
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppHeader);
 
