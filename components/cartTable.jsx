@@ -40,6 +40,11 @@ class Product extends React.Component {
         <tbody>
           {this.props.products.map(product => (
             <tr key={product.id}>
+              <td width="5%">
+                <Button size="small" icon onClick={() => this.props.deleteCartItem(product.id) }>
+                  <DeleteIcon />
+                </Button>
+              </td>
               <td width="10%">
                 <Link href="/products/[id]" as={`/products/${product.id}`}>
                   <a className={styles.thumb}>
@@ -50,36 +55,31 @@ class Product extends React.Component {
               <td>
                 <Link href="/products/[id]" as={`/products/${product.id}`}>
                   <a>
-                    <h3 className={productStyles.productTitle}>{product.name}</h3>
+                    <h3 className={`${utilStyles.headingMd} ${utilStyles.colorPrimary500}`}>{product.name}</h3>
                   </a>
                 </Link>
-                <p className={`${utilStyles.lightText} ${productStyles.productDescription}`}>{product.description}</p>
+                <p className={`${utilStyles.lightText} ${utilStyles.caption}`}>{product.description}</p>
               </td>
-              <td>
-                <StyledPrice product={product} />
+              <td className={styles.numberColumn}>
+                <Price className={utilStyles.lightText} product={product} />
               </td>
-              <td width="10%">
+              <td className={styles.numberColumn} width="10%">
                 <input type="number" defaultValue={product.quantity} className={styles.productQuantity}
                   onBlur={(e) => this.updateProductQuantity({ id: product.id, quantity: e.target.value })} />
               </td>
-              <td>
-                <Price className={utilStyles.lightText} product={product} total />
-              </td>
-              <td width="5%">
-                <Button size="small" icon onClick={() => this.props.deleteCartItem(product.id) }>
-                  <DeleteIcon />
-                </Button>
+              <td className={styles.numberColumn}>
+                <Price product={product} total />
               </td>
             </tr>
           ))}
         </tbody>
         <tfoot>
           <tr>
-            <td colSpan='4'>
+            <td className={styles.numberColumn} colSpan='5'>
               <p className={`${utilStyles.headingMd} ${utilStyles.colorPrimary700}`}>Subtotal</p>
             </td>
-            <td colSpan='2'>
-              <Price className={utilStyles.lightText} product={{price: this.props.subtotal}} />
+            <td className={styles.numberColumn} colSpan='1'>
+              <Price product={{price: this.props.subtotal}} />
             </td>
           </tr>
         </tfoot>

@@ -44,8 +44,8 @@ class ProductCard extends React.Component {
           <a>
             <div className={cardStyles.cardMedia} style={{ backgroundImage: `url(${product.photo_url})` }}></div>
             <div className={cardStyles.cardPrimary}>
-              <h3 className={cardStyles.cardTitle}>{ product.name }</h3>
-              <p className={`${cardStyles.cardText} ${utilStyles.lightText}`}>
+              <h3 className={`${utilStyles.headingMd} ${cardStyles.cardTitle}`}>{ product.name }</h3>
+              <p className={`${utilStyles.caption} ${utilStyles.lightText}`}>
                 { product.description }
               </p>
             </div>

@@ -2,10 +2,13 @@
 
 .basicButton {
   background-color: $primary-500;
+  border-radius: .2rem;
   color: white;
   font-weight: 600;
   text-transform: uppercase;
   display: block;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   text-align: center;
   width: fit-content;
@@ -17,7 +20,7 @@
   padding: 0.6rem 1rem;
 
   svg {
-    height: 16px;
+    height: 1rem;
     width: auto;
   }
 }
@@ -37,6 +40,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  height: 2.4rem;
-  width: 2.4rem;
+  height: 2.2rem;
+  width: 2.2rem;
+  border-radius: 50%;
 }

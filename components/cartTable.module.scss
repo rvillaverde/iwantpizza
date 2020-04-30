@@ -19,6 +19,7 @@
 
     &:first-child {
       padding-left: 1rem;
+      padding-right: 0;
     }
 
     &:nth-child(2) {
@@ -32,6 +33,10 @@
 
   tfoot tr > td {
     padding: 1rem;
+
+    &:first-child {
+      padding-right: .5rem;
+    }
 
     &:last-child {
       padding-left: .5rem;
@@ -51,16 +56,15 @@
       padding: 1rem;
       width: unset;
   
-      &:nth-child(2) {
+      &:nth-child(3) {
         flex-grow: 1;
-        max-width: calc(100% - 6rem);
+        max-width: calc(100% - 10rem);
         padding-left: 0;
         width: 100%;
       }
 
       &:nth-child(4) {
         margin-left: auto;
-        padding: 1rem 0;
       }
     }
 
@@ -94,10 +98,10 @@
   width: auto;
 }
 
+.numberColumn {
+  text-align: right;
+}
+
 .productQuantity {
   width: 4rem;
-
-  @media (max-width: $small-breakpoint) {
-    width: 3rem;
-  }
 }

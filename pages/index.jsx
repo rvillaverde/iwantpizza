@@ -21,7 +21,7 @@ class Home extends React.Component {
     return (
       <Layout home>
         <div className={utilStyles.mainHeadingWrapper} style={{ backgroundImage: "url('/images/pizza-background.jpg')" }}>
-          <h2 className={utilStyles.mainHeading}>Check out our pizzas!</h2>
+          <h2 className={`${utilStyles.headingXl} ${utilStyles.mainHeading}`}>Check out our pizzas!</h2>
         </div>
         <div className={utilStyles.container}>
           <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>

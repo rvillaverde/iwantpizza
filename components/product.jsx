@@ -29,8 +29,8 @@ class Product extends React.Component {
       <div className={`${cardStyles.cardLarge} ${styles.productWrapper}`}>
       <div className={styles.productImage} style={{ backgroundImage: `url(${product.photo_url})` }}></div>
       <div className={styles.productInfo}>
-        <h1 className={styles.productTitle}>{product.name}</h1>
-        <p className={`${utilStyles.lightText} ${styles.productDescription}`}>{product.description}</p>
+        <h1 className={`${utilStyles.headingLg} ${styles.productTitle}`}>{product.name}</h1>
+        <p className={`${utilStyles.lightText} ${utilStyles.body}`}>{product.description}</p>
         <StyledPrice product={product} />
         <Button label='Add to cart' size="medium" onClick={() => this.props.addToCart(product.id) }>
           Add to cart
