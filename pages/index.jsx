@@ -24,10 +24,10 @@ class Home extends React.Component {
           <h2 className={`${utilStyles.headingXl} ${utilStyles.mainHeading}`}>Check out our pizzas!</h2>
         </div>
         <div className={utilStyles.container}>
-          <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+          <section className={`${utilStyles.headingMd}`}>
             <ul className={cardStyles.cardWrapper}>
               {products.map(product => (
-                <ProductCard product={product} key={product.id}/>
+                <ProductCard product={product} key={product.product_id}/>
               ))}
             </ul>
           </section>

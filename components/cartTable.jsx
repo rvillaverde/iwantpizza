@@ -24,7 +24,7 @@ class Product extends React.Component {
   }
 
   updateProductQuantity(data) {
-    this.props.updateCartItem(data.id, Number(data.quantity))
+    this.props.updateCartItem(data.product_id, Number(data.quantity))
   }
 
   render() {
@@ -33,27 +33,29 @@ class Product extends React.Component {
         <thead>
           <tr>
             <td colSpan='6'>
-              <h2 className={`${utilStyles.headingLg} ${utilStyles.colorPrimary700}`}>Shopping cart</h2>
+              <h2 className={`${utilStyles.headingMd} ${utilStyles.colorPrimary700}`}>{ this.props.cart ? 'Shopping cart' : 'Your order' }</h2>
             </td>
           </tr>
         </thead>
         <tbody>
           {this.props.products.map(product => (
-            <tr key={product.id}>
-              <td width="5%">
-                <Button size="small" icon onClick={() => this.props.deleteCartItem(product.id) }>
-                  <DeleteIcon />
-                </Button>
-              </td>
+            <tr key={product.product_id}>
+              { this.props.editable &&
+                <td width="1%">
+                  <Button size="small" icon onClick={() => this.props.deleteCartItem(product.product_id) }>
+                    <DeleteIcon />
+                  </Button>
+                </td>
+              }
               <td width="10%">
-                <Link href="/products/[id]" as={`/products/${product.id}`}>
+                <Link href="/products/[id]" as={`/products/${product.product_id}`}>
                   <a className={styles.thumb}>
                     <img className={styles.tumbImage} src={product.photo_url} alt={product.name} />
                   </a>
                 </Link>
               </td>
               <td>
-                <Link href="/products/[id]" as={`/products/${product.id}`}>
+                <Link href="/products/[id]" as={`/products/${product.product_id}`}>
                   <a>
                     <h3 className={`${utilStyles.headingMd} ${utilStyles.colorPrimary500}`}>{product.name}</h3>
                   </a>
@@ -64,8 +66,11 @@ class Product extends React.Component {
                 <Price className={utilStyles.lightText} product={product} />
               </td>
               <td className={styles.numberColumn} width="10%">
-                <input type="number" defaultValue={product.quantity} className={styles.productQuantity}
-                  onBlur={(e) => this.updateProductQuantity({ id: product.id, quantity: e.target.value })} />
+                { this.props.editable 
+                  ? <input type="number" defaultValue={product.quantity} className={styles.productQuantity}
+                      onBlur={(e) => this.updateProductQuantity({ product_id: product.product_id, quantity: e.target.value })} />
+                  : <span className={utilStyles.body}>{product.quantity}</span>
+                }
               </td>
               <td className={styles.numberColumn}>
                 <Price product={product} total />
@@ -75,8 +80,8 @@ class Product extends React.Component {
         </tbody>
         <tfoot>
           <tr>
-            <td className={styles.numberColumn} colSpan='5'>
-              <p className={`${utilStyles.headingMd} ${utilStyles.colorPrimary700}`}>Subtotal</p>
+            <td className={styles.numberColumn} colSpan={this.props.editable ? 5 : 4}>
+              <p className={`${utilStyles.headingMd} ${utilStyles.colorPrimary700}`}>Cart total</p>
             </td>
             <td className={styles.numberColumn} colSpan='1'>
               <Price product={{price: this.props.subtotal}} />

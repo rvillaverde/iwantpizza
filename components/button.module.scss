@@ -2,6 +2,7 @@
 
 .basicButton {
   background-color: $primary-500;
+  border: 1px solid $primary-500;
   border-radius: .2rem;
   color: white;
   font-weight: 600;
@@ -14,9 +15,34 @@
   width: fit-content;
 }
 
+.basicButton:disabled {
+  opacity: 0.5;
+}
+
+.basicButton:active {
+  background-color: $primary-700;
+  border-color: $primary-700;
+}
+
+.basicButton:focus {
+  outline: none;
+}
+
+.basicButton:not(:disabled) {
+  cursor: pointer;
+}
+
+.secondaryButton {
+  background-color: white;
+  color: $primary-500;
+}
+
+.secondaryButton:active {
+  color: white;
+}
+
 .smallButton {
   font-size: 0.6em;
-  letter-spacing: 0.08rem;
   padding: 0.6rem 1rem;
 
   svg {
@@ -27,7 +53,6 @@
 
 .mediumButton {
   font-size: 0.8rem;
-  letter-spacing: 0.2rem;
   padding: 0.6rem 2rem;
 }
 

@@ -7,17 +7,22 @@ const sizes = {
   large: styles.largeButton
 }
 
-export default function Button({ href, children, size, onClick, icon }) {
+export default function Button({ id, href, type, form, children, size, onClick, icon, secondary, disabled }) {
   if (href) {
     return (
       <Link href="[href]" as={href}>
-        <a className={`${styles.basicButton} ${sizes[size]}`}>{children}</a>
+        <a id={id} className={`${styles.basicButton} ${sizes[size]} ${icon ? styles.iconButton : ''} ${secondary ? styles.secondaryButton : ''}`}>
+          {children}
+        </a>
       </Link>
     )
   } else {
-      return (
-        <a className={`${styles.basicButton} ${sizes[size]} ${icon ? styles.iconButton : ''}`} onClick={onClick}>{children}</a>
-      )
-    
+    return (
+      <button id={id} type={type} form={form} disabled={disabled ? true : false}
+        className={`${styles.basicButton} ${sizes[size]} ${icon ? styles.iconButton : ''} ${secondary ? styles.secondaryButton : ''}`}
+        onClick={onClick}>
+        {children}
+      </button>
+    )
   }
 }

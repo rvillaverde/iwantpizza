@@ -32,9 +32,17 @@
   margin: 0;
 }
 
+.headingSm {
+  font-size: 1rem;
+  font-weight: 600;;
+  line-height: 1.5;
+  margin: 0;
+}
+
 .caption {
   font-size: 0.8rem;
   font-weight: 400;
+  line-height: 1.2rem;
 }
 
 .body {
@@ -56,10 +64,6 @@
 
 .colorPrimary700 {
   color: $primary-700;
-}
-
-.padding1px {
-  padding-top: 1px;
 }
 
 .lightText {
@@ -94,4 +98,54 @@
   position: relative;
   text-align: center;
   text-shadow: 2px 2px 0 $primary-700;
+}
+
+.formActions {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  justify-content: flex-end;
+
+  @media (min-width: $small-breakpoint) {
+    *:not(:first-child) {
+      margin-left: 1rem;
+    }
+  }
+
+  @media (max-width: $small-breakpoint) {
+    flex-direction: column;
+
+    * {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+  }
+}
+
+.flexWrapper {
+  display: flex;
+  align-items: flex-start;
+
+  > * {
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  @media (max-width: $medium-breakpoint) {
+    flex-direction: column;
+  }
+}
+
+.flexWrapper .customerInfo:last-child {
+  flex-grow: 0;
+  margin-top: 0;
+  margin-left: 1rem;
+  padding: 1rem;
+  width: 30%;
+  
+  @media (max-width: $medium-breakpoint) {
+    width: 100%;
+    margin-top: 1rem;
+    margin-left: 0;
+  }
 }

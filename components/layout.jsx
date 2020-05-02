@@ -27,7 +27,8 @@ export default function Layout({ children, home }) {
       <main>{children}</main>
 
       <footer>
-        <p>©2020 - I WANT PIZZA</p>
+        <p className={utilStyles.caption}>©2020 - I WANT PIZZA</p>
+        <p className={utilStyles.caption}>123 Main St. - Magical mystery Place</p>
       </footer>
 
       <style jsx global>{`

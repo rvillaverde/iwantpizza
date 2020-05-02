@@ -9,28 +9,6 @@ import Price from './price'
 import utilStyles from '../styles/utils.module.scss'
 import cardStyles from '../styles/cards.module.scss'
 
-// export default function ProductCard({ product }) {
-//   return (
-//     <li className={cardStyles.card} key={product.id}>
-//       <Link href="/products/[id]" as={`/products/${product.id}`}>
-//         <a>
-//           <div className={cardStyles.cardMedia} style={{ backgroundImage: `url(${product.photo_url})` }}></div>
-//           <div className={cardStyles.cardPrimary}>
-//             <h3 className={cardStyles.cardTitle}>{ product.name }</h3>
-//             <p className={`${cardStyles.cardText} ${utilStyles.lightText}`}>
-//               { product.description }
-//             </p>
-//           </div>
-//         </a>
-//       </Link>
-//       <div className={cardStyles.cardActions}>
-//         <Price product={product} />
-//         <Button href='#' label='Add to cart' size="small" />
-//       </div>
-//     </li>
-//   )
-// }
-
 class ProductCard extends React.Component {
   constructor(props) {
     super(props);
@@ -39,8 +17,8 @@ class ProductCard extends React.Component {
   render() {
     const product = this.props.product;
     return (
-      <li className={cardStyles.card} key={product.id}>
-        <Link href="/products/[id]" as={`/products/${product.id}`}>
+      <li className={cardStyles.card} key={product.product_id}>
+        <Link href="/products/[id]" as={`/products/${product.product_id}`}>
           <a>
             <div className={cardStyles.cardMedia} style={{ backgroundImage: `url(${product.photo_url})` }}></div>
             <div className={cardStyles.cardPrimary}>
@@ -53,7 +31,7 @@ class ProductCard extends React.Component {
         </Link>
         <div className={cardStyles.cardActions}>
           <Price product={product} />
-          <Button size="small" onClick={() => this.props.addToCart(product.id) }>
+          <Button size="small" onClick={() => this.props.addToCart(product.product_id) }>
             Add to cart
           </Button>
         </div>

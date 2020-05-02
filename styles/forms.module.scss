@@ -1,0 +1,54 @@
+@import './mixins';
+
+.formTitle, .fieldSet {
+  margin: 1rem;
+}
+
+.fieldSet {
+  display: flex;
+  align-items: center;
+}
+
+.textField {
+  width: 100%;
+}
+
+.formField {
+  flex-grow: 1;
+  margin: 0 .5rem;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: $small-breakpoint) {
+  .fieldSet {
+    flex-wrap: wrap;
+
+    .formField {
+      margin: 1rem 0;
+      margin-top: 0;
+      width: 100%;
+    }
+    
+    .formField:not(.small) {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .formField.small {
+      max-width: 50%;
+      flex-shrink: 1;
+
+      &:last-child {
+        padding-left: 1rem;
+      }
+    }
+  }
+}

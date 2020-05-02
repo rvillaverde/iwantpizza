@@ -19,11 +19,17 @@ footer {
   position: absolute;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   bottom: 0;
   width: 100%;
   padding: 0 1rem;
   background-color: $primary-700;
   color: $tertiary-500;
+
+  @media (max-width: $small-breakpoint) {
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 * {
@@ -55,6 +61,10 @@ input {
 
   &:focus {
     outline: none;
+  }
+
+  &:disabled {
+    background-color: white;
   }
 }
 

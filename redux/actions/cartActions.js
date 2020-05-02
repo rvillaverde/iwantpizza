@@ -5,6 +5,7 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const ADDED_TO_CART = "ADDED_TO_CART";
 export const UPDATE_CART_ITEM = "UDPATE_CART_ITEM";
 export const DELETE_CART_ITEM = "DELETE_CART_ITEM";
+export const CHECKOUT = "CHECKOUT";
 
 export const addToCart = (id) => {
   return dispatch => {
@@ -20,11 +21,15 @@ export const addedToCart = (product) => ({
 
 export const updateCartItem = (id, quantity) => ({
   type: UPDATE_CART_ITEM,
-  id: id,
+  product_id: id,
   quantity: quantity
 });
 
 export const deleteCartItem = (id) => ({
   type: DELETE_CART_ITEM,
-  id: id
+  product_id: id
+});
+
+export const checkout = () => ({
+  type: CHECKOUT
 });
