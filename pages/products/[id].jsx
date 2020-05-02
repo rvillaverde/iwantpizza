@@ -1,11 +1,12 @@
+import React from 'react';
 import Head from 'next/head'
+
 import { getProduct } from '../../lib/products'
+
 import Layout from '../../components/layout'
 import Product from '../../components/product'
+
 import utilStyles from '../../styles/utils.module.scss'
-import React from 'react';
-// import {connect} from 'react-redux';
-// import {addToCart} from '../../redux/actions/cartActions';
 
 class ProductDetail extends React.Component {
   static async getInitialProps({ store, query }) {
@@ -33,13 +34,3 @@ class ProductDetail extends React.Component {
 }
 
 export default ProductDetail;
-
-// const mapStateToProps = state => ({
-//   cart: state.cart
-// });
-
-// const mapDispatchToProps = {
-//   addToCart: addToCart
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

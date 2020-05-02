@@ -1,16 +1,12 @@
-import '../styles/global.scss'
-
-// export default function App({ Component, pageProps }) {
-// return <Component {...pageProps} />
-// }
-
 import App from 'next/app';
-import {Provider} from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react'
 import React from 'react';
+import {Provider} from 'react-redux';
 import withRedux from "next-redux-wrapper";
 import { store, persistor } from '../redux/store';
+import { PersistGate } from 'redux-persist/integration/react'
 import { REHYDRATE } from 'redux-persist';
+
+import '../styles/global.scss'
 
 class MyApp extends App {
   static async getInitialProps({Component, ctx}) {

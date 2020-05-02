@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import fetch from 'node-fetch'
 import Router from 'next/router'
 
 import {checkout} from '../redux/actions/cartActions';

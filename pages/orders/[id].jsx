@@ -44,14 +44,4 @@ class OrderDetail extends React.Component {
   }
 }
 
-// const mapStateToProps = state => ({
-//   cart: state.cart
-// });
-
-// const mapDispatchToProps = {
-//   addToCart: addToCart
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Home);
-
 export default OrderDetail;
