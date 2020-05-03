@@ -69,7 +69,7 @@ class Product extends React.Component {
               <td className={styles.numberColumn} width="10%">
                 { this.props.editable 
                   ? <input type="number" defaultValue={product.quantity} className={styles.productQuantity}
-                      onBlur={(e) => this.updateProductQuantity({ product_id: product.product_id, quantity: e.target.value })} />
+                      onKeyUp={(e) => this.updateProductQuantity({ product_id: product.product_id, quantity: e.target.value })} />
                   : <span className={utilStyles.body}>{product.quantity}</span>
                 }
               </td>
