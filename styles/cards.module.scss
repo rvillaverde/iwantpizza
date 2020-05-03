@@ -30,7 +30,7 @@
   transition: box-shadow .3s ease-in-out;
 }
 
-.card:not(.cardLarg) {
+.card:not(.cardLarge) {
   display: flex;
   flex-direction: column;
 }
