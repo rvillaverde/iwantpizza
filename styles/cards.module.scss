@@ -30,6 +30,11 @@
   transition: box-shadow .3s ease-in-out;
 }
 
+.card:not(.cardLarg) {
+  display: flex;
+  flex-direction: column;
+}
+
 .cardLarge {
   @extend .card;
 
@@ -68,7 +73,8 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-top: 2rem;
+  margin-top: auto;
+  padding-top: 1rem;
 }
 
 .cardTitle {
