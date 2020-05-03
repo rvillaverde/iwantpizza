@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Router from 'next/router'
 
-import {checkout} from '../redux/actions/cartActions';
+import {checkout, changeCurrency} from '../redux/actions/cartActions';
 
 import Button from '../components/button'
 import CartTable from '../components/cartTable'
@@ -17,7 +17,7 @@ import { createOrder } from '../lib/orders';
 class Checkout extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { postalCode: undefined }
+    this.state = { postalCode: undefined, shippingFee: 0 }
     this.newOrder = this.newOrder.bind(this);
     this.calculateShipping = this.calculateShipping.bind(this);
     this.toggleShippingButton = this.toggleShippingButton.bind(this);
@@ -30,12 +30,14 @@ class Checkout extends React.Component {
   async calculateShipping(e) {
     e.preventDefault();
     let shippingFee = await getShippingFee(this.state.postalCode)
+    this.setState({ shippingFee: shippingFee.fee })
   }
 
   async newOrder(e) {
     e.preventDefault()
     const formData = new FormData(e.target)
     const order = { customer: {} }
+    order.currency = this.props.currency
     order.products = this.props.cart.items.map((item) => ({ id: item.product_id, quantity: item.quantity, price: item.price }))
     for (let entry of formData.entries()) {
       order.customer[entry[0]] = entry[1]
@@ -52,7 +54,7 @@ class Checkout extends React.Component {
       <Layout>
         <div className={utilStyles.container}>
           <div className={cardStyles.cardLarge}>
-            <CartTable products={ this.props.cart.items }></CartTable>
+            <CartTable products={ this.props.cart.items } shippingFee={ this.state.shippingFee }></CartTable>
           </div>
 
           <div className={cardStyles.cardLarge}>
@@ -110,10 +112,12 @@ class Checkout extends React.Component {
 
 
 const mapStateToProps = state => ({
-  cart: state.cart
+  cart: state.cart,
+  currency: state.cart.currency
 });
 
 const mapDispatchToProps = {
-  checkout: checkout
+  checkout: checkout,
+  changeCurrency: changeCurrency
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

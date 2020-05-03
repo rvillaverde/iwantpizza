@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {addedToCart} from '../redux/actions/cartActions';
+import {addedToCart, changeCurrency} from '../redux/actions/cartActions';
 
 import Link from 'next/link'
+import Button from './button'
 import Logo from './logo'
 import {CartIcon} from './icons'
 
@@ -11,12 +12,27 @@ import styles from './appHeader.module.scss'
 class AppHeader extends React.Component {
   constructor(props) {
     super(props);
+    this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
+  }
+
+  handleCurrencyChange(currency) {
+    this.props.changeCurrency(currency)
   }
 
   render() {
     return (
       <header className={styles.header}>
       <nav className={styles.appNav}>
+        <div className={styles.leftSection}>
+          <Button className={`${ (this.props.currency == 'usd') ? styles.active : ''}`} size="small" type="button"
+            onClick={() => this.handleCurrencyChange('usd')}>
+            $
+          </Button>
+          <Button className={`${ (this.props.currency == 'eur') ? styles.active : ''}`} size="small" type="button" 
+            onClick={() => this.handleCurrencyChange('eur')}>
+            €
+          </Button>
+        </div>
         <div className={styles.rightSection}>
           <Link href="/cart" as={'/cart'}>
             <a className={styles.cartLink} data-quantity={this.props.counter}>
@@ -34,12 +50,14 @@ class AppHeader extends React.Component {
 const mapStateToProps = function(state) {
   return {
     items: state.cart.items,
-    counter: Object.keys(state.cart.items).length
+    counter: Object.keys(state.cart.items).length,
+    currency: state.cart.currency
   }
 }
 
 const mapDispatchToProps = {
-  addedToCart: addedToCart
+  addedToCart: addedToCart,
+  changeCurrency: changeCurrency
 };
 // const mapDispatchToProps = (dispatch)=>{
 //   return {

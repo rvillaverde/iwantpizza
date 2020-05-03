@@ -19,6 +19,14 @@
   z-index: 24;
 }
 
+.active {
+  background-color: $primary-700;
+}
+
+.leftSection {
+  display: flex;
+}
+
 .rightSection {
   margin-left: auto;
 }

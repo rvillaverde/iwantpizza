@@ -1,6 +1,6 @@
-import { ADD_TO_CART, ADDED_TO_CART, UPDATE_CART_ITEM, DELETE_CART_ITEM, CHECKOUT } from '../actions/cartActions';
+import { ADD_TO_CART, ADDED_TO_CART, UPDATE_CART_ITEM, DELETE_CART_ITEM, CHECKOUT, CHANGE_CURRENCY } from '../actions/cartActions';
 
-const cartReducer = (state = { items: [] }, action) => {
+const cartReducer = (state = { currency: "usd", items: [] }, action) => {
   let productId;
 
   switch (action.type) {
@@ -25,6 +25,9 @@ const cartReducer = (state = { items: [] }, action) => {
       return {...state};
     case CHECKOUT: 
       state.items = state.items = [];
+      return {...state};
+    case CHANGE_CURRENCY: 
+      state.currency = action.currency;
       return {...state};
     default:
       return state;

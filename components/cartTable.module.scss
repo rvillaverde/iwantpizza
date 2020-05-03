@@ -19,10 +19,13 @@
 
     &:first-child {
       padding-left: 1rem;
+    }
+
+    &:first-child:not(.imageColumn) {
       padding-right: 0;
     }
 
-    &:nth-child(2) {
+    .imageColumn {
       padding: 1rem;
     }
 
@@ -56,7 +59,7 @@
       padding: 1rem;
       width: unset;
   
-      &:nth-child(3) {
+      &.descriptionColumn {
         flex-grow: 1;
         max-width: calc(100% - 10rem);
         padding-left: 0;

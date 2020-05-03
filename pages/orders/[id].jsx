@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {changeCurrency} from '../../redux/actions/cartActions';
 
 import { getOrder } from '../../lib/orders'
 import Layout from '../../components/layout'
@@ -12,12 +14,14 @@ class OrderDetail extends React.Component {
     const order = await getOrder(query.id)
     return { order }
   }
-
+  
   constructor(props) {
     super(props);
+    this.props.changeCurrency(this.props.order.currency)
   }
 
   render() {
+    console.log(this.props.order)
     return (
       <Layout home>
         <div className={utilStyles.mainHeadingWrapper} style={{ backgroundImage: "url('/images/pizza-background.jpg')" }}>
@@ -26,7 +30,7 @@ class OrderDetail extends React.Component {
         <div className={`${utilStyles.container}`}>
           <section className={`${utilStyles.flexWrapper}`}>
             <div className={cardStyles.cardLarge}>
-              <CartTable products={ this.props.order.products }></CartTable>
+              <CartTable products={ this.props.order.products } shippingFee={ this.props.order.shipping_fee } order={this.props.order}></CartTable>
             </div>
             <div className={`${cardStyles.cardLarge} ${utilStyles.customerInfo}`}>
               <h3 className={`${utilStyles.headingMd} ${utilStyles.colorPrimary700}`}>{this.props.order.customer.first_name} {this.props.order.customer.last_name}</h3>
@@ -44,4 +48,14 @@ class OrderDetail extends React.Component {
   }
 }
 
-export default OrderDetail;
+const mapStateToProps = function(state) {
+  return {
+    currency: state.cart.currency
+  }
+}
+
+const mapDispatchToProps = {
+  changeCurrency: changeCurrency
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderDetail);

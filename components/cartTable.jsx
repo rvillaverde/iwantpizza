@@ -10,8 +10,6 @@ import Price from './price'
 import {DeleteIcon} from './icons'
 
 import styles from './cartTable.module.scss'
-import productStyles from './product.module.scss'
-import cardStyles from '../styles/cards.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 
 const StyledPrice = styled(Price)`
@@ -28,6 +26,9 @@ class Product extends React.Component {
   }
 
   render() {
+    const products = this.props.order ? this.props.order.products : this.props.products;
+    const subtotal = this.props.order ? this.props.order.subtotal : this.props.subtotal;
+    const shippingFee = this.props.order ? this.props.order.shipping_fee : this.props.shippingFee;
     return (
       <table className={styles.cartTable}>
         <thead>
@@ -38,7 +39,7 @@ class Product extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.products.map(product => (
+          {products.map(product => (
             <tr key={product.product_id}>
               { this.props.editable &&
                 <td width="1%">
@@ -47,14 +48,14 @@ class Product extends React.Component {
                   </Button>
                 </td>
               }
-              <td width="10%">
+              <td className={styles.imageColumn} width="10%">
                 <Link href="/products/[id]" as={`/products/${product.product_id}`}>
                   <a className={styles.thumb}>
                     <img className={styles.tumbImage} src={product.photo_url} alt={product.name} />
                   </a>
                 </Link>
               </td>
-              <td>
+              <td className={styles.descriptionColumn}>
                 <Link href="/products/[id]" as={`/products/${product.product_id}`}>
                   <a>
                     <h3 className={`${utilStyles.headingMd} ${utilStyles.colorPrimary500}`}>{product.name}</h3>
@@ -63,7 +64,7 @@ class Product extends React.Component {
                 <p className={`${utilStyles.lightText} ${utilStyles.caption}`}>{product.description}</p>
               </td>
               <td className={styles.numberColumn}>
-                <Price className={utilStyles.lightText} product={product} />
+                <Price className={utilStyles.lightText} price={product.price} />
               </td>
               <td className={styles.numberColumn} width="10%">
                 { this.props.editable 
@@ -73,7 +74,7 @@ class Product extends React.Component {
                 }
               </td>
               <td className={styles.numberColumn}>
-                <Price product={product} total />
+                <Price price={product.price} quantity={product.quantity} />
               </td>
             </tr>
           ))}
@@ -84,9 +85,29 @@ class Product extends React.Component {
               <p className={`${utilStyles.headingMd} ${utilStyles.colorPrimary700}`}>Cart total</p>
             </td>
             <td className={styles.numberColumn} colSpan='1'>
-              <Price product={{price: this.props.subtotal}} />
+              <Price price={subtotal} />
             </td>
           </tr>
+          { !this.props.editable && 
+            <React.Fragment>
+              <tr>
+                <td className={styles.numberColumn} colSpan={4}>
+                  <p className={`${utilStyles.headingMd} ${utilStyles.colorPrimary700}`}>Shipping fee</p>
+                </td>
+                <td className={styles.numberColumn} colSpan='1'>
+                  <Price price={shippingFee} />
+                </td>
+              </tr>
+              <tr>
+                <td className={styles.numberColumn} colSpan={4}>
+                  <p className={`${utilStyles.headingMd} ${utilStyles.colorPrimary700}`}>Total</p>
+                </td>
+                <td className={styles.numberColumn} colSpan='1'>
+                  <Price price={ shippingFee + subtotal } />
+                </td>
+              </tr>
+            </React.Fragment>
+          }
         </tfoot>
       </table>
     );

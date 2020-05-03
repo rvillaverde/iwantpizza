@@ -6,6 +6,7 @@ export const ADDED_TO_CART = "ADDED_TO_CART";
 export const UPDATE_CART_ITEM = "UDPATE_CART_ITEM";
 export const DELETE_CART_ITEM = "DELETE_CART_ITEM";
 export const CHECKOUT = "CHECKOUT";
+export const CHANGE_CURRENCY = "CHANGE_CURRENCY";
 
 export const addToCart = (id) => {
   return dispatch => {
@@ -32,4 +33,9 @@ export const deleteCartItem = (id) => ({
 
 export const checkout = () => ({
   type: CHECKOUT
+});
+
+export const changeCurrency = (currency) => ({
+  type: CHANGE_CURRENCY,
+  currency: currency
 });
