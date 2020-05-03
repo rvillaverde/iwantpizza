@@ -2,6 +2,14 @@
 
 You can find the API code [here](https://github.com/rvillaverde/iwantpizzapi).
 
+## Getting started
+
+Before you start up the server, run
+
+### `npm install`
+
+to install all the dependencies.
+
 ## Available Scripts
 
 In the project directory, you can run:
