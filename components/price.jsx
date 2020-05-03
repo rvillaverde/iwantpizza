@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {changeCurrency} from '../redux/actions/cartActions';
 
 const currencies = {
-  usd: { symbol: '$', rate: 1 },
+  usd: { symbol: 'US$', rate: 1 },
   eur: { symbol: '€', rate: 0.9 }
 }
 

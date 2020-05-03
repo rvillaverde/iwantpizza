@@ -26,7 +26,7 @@ class AppHeader extends React.Component {
         <div className={styles.leftSection}>
           <Button className={`${ (this.props.currency == 'usd') ? styles.active : ''}`} size="small" type="button"
             onClick={() => this.handleCurrencyChange('usd')}>
-            $
+            US$
           </Button>
           <Button className={`${ (this.props.currency == 'eur') ? styles.active : ''}`} size="small" type="button" 
             onClick={() => this.handleCurrencyChange('eur')}>
