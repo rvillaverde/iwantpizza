@@ -27,16 +27,16 @@ class Product extends React.Component {
     const product = this.props.product;
     return (
       <div className={`${cardStyles.cardLarge} ${styles.productWrapper}`}>
-      <div className={styles.productImage} style={{ backgroundImage: `url(${product.photo_url})` }}></div>
-      <div className={styles.productInfo}>
-        <h1 className={`${utilStyles.headingLg} ${styles.productTitle}`}>{product.name}</h1>
-        <p className={`${utilStyles.lightText} ${utilStyles.body}`}>{product.description}</p>
-        <StyledPrice price={product.price} />
-        <Button size="medium" onClick={() => this.props.addToCart(product.product_id) }>
-          Add to cart
-        </Button>
+        <div className={styles.productImage} style={{ backgroundImage: `url(${product.photo_url})` }}></div>
+        <div className={styles.productInfo}>
+          <h1 className={`${utilStyles.headingLg} ${styles.productTitle}`}>{product.name}</h1>
+          <p className={`${utilStyles.lightText} ${utilStyles.body}`}>{product.description}</p>
+          <StyledPrice price={product.price} />
+          <Button size="medium" onClick={() => this.props.addToCart(product.product_id) }>
+            Add to cart
+          </Button>
+        </div>
       </div>
-    </div>
     );
   }
 }

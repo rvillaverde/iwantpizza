@@ -59,11 +59,6 @@ const mapDispatchToProps = {
   addedToCart: addedToCart,
   changeCurrency: changeCurrency
 };
-// const mapDispatchToProps = (dispatch)=>{
-//   return {
-//     addedToCart: (id)=>{dispatch(addedToCart(id))}
-//   }
-// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppHeader);
 

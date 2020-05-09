@@ -19,8 +19,13 @@
   z-index: 24;
 }
 
+.appNav button:not(:first-child) {
+  margin-left: .2rem;
+}
+
 .active {
   background-color: $primary-700;
+  border-color: $primary-700;
 }
 
 .leftSection {
