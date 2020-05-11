@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Link from 'next/link'
 import styles from './logo.module.scss'
 
