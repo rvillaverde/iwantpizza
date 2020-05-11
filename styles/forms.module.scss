@@ -4,6 +4,14 @@
   margin: 1rem;
 }
 
+.section {
+  display: flex;
+}
+
+.subsectionLarge {
+  flex: 1;
+}
+
 .fieldSet {
   display: flex;
   align-items: center;

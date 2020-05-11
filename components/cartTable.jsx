@@ -16,7 +16,7 @@ const StyledPrice = styled(Price)`
   color: #999;
 `;
 
-class Product extends React.Component {
+class CartTable extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -126,4 +126,4 @@ const mapDispatchToProps= (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Product);
+export default connect(mapStateToProps, mapDispatchToProps)(CartTable);

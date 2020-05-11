@@ -17,7 +17,7 @@ import { createOrder } from '../lib/orders';
 class Checkout extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { postalCode: undefined, shippingFee: 0 }
+    this.state = { postalCode: undefined, shippingFee: 0, loading: false }
     this.newOrder = this.newOrder.bind(this);
     this.calculateShipping = this.calculateShipping.bind(this);
     this.toggleShippingButton = this.toggleShippingButton.bind(this);
@@ -35,6 +35,7 @@ class Checkout extends React.Component {
 
   async newOrder(e) {
     e.preventDefault()
+    this.setState({ loading: true })
     const formData = new FormData(e.target)
     const order = { customer: {} }
     order.currency = this.props.currency
@@ -100,7 +101,7 @@ class Checkout extends React.Component {
             <Button size="medium" type="button" id="shipping-button" onClick={this.calculateShipping} secondary disabled={!this.state.postalCode}>
               Calculate shipping
             </Button>
-            <Button type="submit" form="orderForm" size="medium">
+            <Button type="submit" form="orderForm" size="medium" disabled={this.state.loading}>
               Confirm
             </Button>
           </div>
