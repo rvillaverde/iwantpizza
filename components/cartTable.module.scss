@@ -48,7 +48,11 @@
 
   @media (max-width: $medium-breakpoint) {
     padding: .4rem;
-  
+
+    .actionsColumn {
+      margin-left: auto;
+    }
+
     tr {
       display: flex;
       flex-wrap: wrap;

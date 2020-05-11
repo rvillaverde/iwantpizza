@@ -35,6 +35,10 @@
 }
 
 @media (max-width: $small-breakpoint) {
+  .section {
+    flex-direction: column;
+  }
+
   .fieldSet {
     flex-wrap: wrap;
 
