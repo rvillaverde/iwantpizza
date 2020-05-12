@@ -156,11 +156,11 @@
   align-items: center;
   margin: 1rem;
 
-  h3 {
+  > h3 {
     margin: 1rem;
   }
 
-  p {
+  > p {
     text-align: center;
   }
 }

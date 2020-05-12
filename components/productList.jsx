@@ -1,18 +1,19 @@
 import React from 'react';
 
-import { deleteProduct } from '../lib/products'
+import { editProduct, deleteProduct } from '../lib/products'
 
 import Link from 'next/link'
 import Button from './button'
 import Modal from './modal'
 import Price from './price'
+import ProductForm from './productForm'
 import { EditIcon, DeleteIcon, ConfirmDeleteIcon } from './icons'
 
 import styles from './cartTable.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 
 const DeleteProductModal = ({ open, handler, confirm }) => (
-  <Modal open={ open } handler={ handler }>
+  <Modal open={ open } handler={ () => handler() }>
     <div className={utilStyles.modalContent}>
       <ConfirmDeleteIcon />
       <h3 className={`${utilStyles.headingMd} ${utilStyles.colorPrimary700}`}>Are you sure?</h3>
@@ -23,7 +24,7 @@ const DeleteProductModal = ({ open, handler, confirm }) => (
       </p>
     </div>
     <div className={utilStyles.modalActions}>
-      <Button size="medium" type="button" secondary onClick={ handler }>
+      <Button size="medium" type="button" secondary onClick={ () => handler() }>
         Cancel
       </Button>
       <Button size="medium" type="button" onClick={ confirm }>
@@ -33,16 +34,47 @@ const DeleteProductModal = ({ open, handler, confirm }) => (
   </Modal>
 );
 
+const EditProductModal = ({ open, handler, confirm, productId, loading, toggleLoading }) => (
+  <Modal open={ open } handler={ () => handler() } loading={ loading }>
+    <div className={utilStyles.modalContent}>
+      <ProductForm id="edit-product-form" productId={ productId } onSubmit={ confirm } toggleLoading={ toggleLoading }></ProductForm>
+    </div>
+    <div className={utilStyles.modalActions}>
+      <Button size="medium" type="button" secondary onClick={ () => handler() }>
+        Cancel
+      </Button>
+      <Button size="medium" type="submit" form="edit-product-form">
+        Save
+      </Button>
+    </div>
+  </Modal>
+)
+
+const defaultState = { editModalOpen: false, deleteModalOpen: false, loading: false }
+
 class ProductList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { editModalOpen: false, deleteModalOpen: false }
+    this.state = defaultState
     this.deleteProduct = this.deleteProduct.bind(this);
+    this.editProduct = this.editProduct.bind(this);
     this.toggleDeleteModal = this.toggleDeleteModal.bind(this);
+    this.toggleEditModal = this.toggleEditModal.bind(this);
+    this.toggleLoading = this.toggleLoading.bind(this);
+  }
+
+  toggleLoading(loading) {
+    this.setState({ loading: loading ? loading : !this.state.loading })
   }
 
   toggleEditModal(productId) {
     this.setState({ editModalOpen: !this.state.editModalOpen, productId: productId })
+  }
+
+  async editProduct(formData) {
+    this.setState({ loading: true })
+    await editProduct(formData)
+    window.location.reload(false)
   }
 
   async deleteProduct() {
@@ -58,7 +90,17 @@ class ProductList extends React.Component {
   render() {
     return (
       <div>
-        <DeleteProductModal open={ this.state.deleteModalOpen } handler={ this.toggleDeleteModal } confirm={ this.deleteProduct }/>
+        <DeleteProductModal open={ this.state.deleteModalOpen }
+          handler={ this.toggleDeleteModal }
+          confirm={ this.deleteProduct }/>
+
+        <EditProductModal open={ this.state.editModalOpen }
+          handler={ this.toggleEditModal }
+          confirm={ this.editProduct }
+          productId={ this.state.productId }
+          loading={ this.state.loading }
+          toggleLoading={ this.toggleLoading } />
+
         <table className={styles.cartTable}>
           <thead>
             <tr>

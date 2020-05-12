@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from 'react'
 import {useDropzone} from 'react-dropzone'
 import styled from 'styled-components'
+import utilStyles from '../styles/utils.module.scss'
 
 const getBorderColor = (props) => {
   if (props.isDragAccept) {
@@ -34,7 +35,6 @@ const Container = styled.div`
   border-color: ${props => getBorderColor(props)};
   border-style: dashed;
   background-color:  ${props => getBackgroundColor(props)};
-  color: #bdbdbd;
   margin: 1rem;
   outline: none;
   transition: border .24s ease-in-out;
@@ -58,7 +58,9 @@ export default function FileUploader({ onChange, name }) {
     <div className="container">
       <Container {...getRootProps({isDragActive, isDragAccept, isDragReject})}>
         <input name={name} {...getInputProps()} />
-        <p>Drag 'n' drop the product image here, or click to select a file.</p>
+        <p className={`${utilStyles.lightText} ${utilStyles.body}`}>
+          Drag 'n' drop the product image here, or click to select a file.
+        </p>
       </Container>
     </div>
   )
