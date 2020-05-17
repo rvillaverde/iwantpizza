@@ -9,6 +9,7 @@ import Modal from './modal'
 import Price from './price'
 import ProductForm from './productForm'
 import { EditIcon, DeleteIcon, ConfirmDeleteIcon } from './icons'
+import { Table, THead, TBody, TFoot, Tr, Td, NumberColumn, ActionsColumn, DescriptionColumn, ImageColumn } from './table'
 
 import styles from './cartTable.module.scss'
 import utilStyles from '../styles/utils.module.scss'
@@ -102,54 +103,52 @@ class ProductList extends React.Component {
           loading={ this.state.loading }
           toggleLoading={ this.toggleLoading } />
 
-        <table className={styles.cartTable}>
-          <thead>
-            <tr>
-              <td colSpan='2'>
+        <Table>
+          <THead>
+            <Tr>
+              <Td colSpan='2'>
                 <h2 className={`${utilStyles.headingMd} ${utilStyles.colorPrimary700}`}>Products</h2>
-              </td>
-              <td className={styles.actionsColumn} colSpan='3'>
-                <LinkButton href="/products/new">
-                  New product
-                </LinkButton>
-              </td>
-            </tr>
-          </thead>
-          <tbody>
+              </Td>
+              <ActionsColumn colSpan='3'>
+                <LinkButton href="/products/new">New product</LinkButton>
+              </ActionsColumn>
+            </Tr>
+          </THead>
+          <TBody>
             {this.props.products.map(product => (
-              <tr key={product.product_id} data-product-id={product.product_id}>
-                <td className={styles.imageColumn} width="10%">
+              <Tr key={product.product_id} data-product-id={product.product_id}>
+                <ImageColumn width="10%">
                   <Link href="/products/[id]" as={`/products/${product.product_id}`}>
                     <a className={styles.thumb}>
                       <img className={styles.tumbImage} src={product.photo_url} alt={product.name} />
                     </a>
                   </Link>
-                </td>
-                <td className={styles.descriptionColumn}>
+                </ImageColumn>
+                <DescriptionColumn>
                   <Link href="/products/[id]" as={`/products/${product.product_id}`}>
                     <a>
                       <h3 className={`${utilStyles.headingMd} ${utilStyles.colorPrimary500}`}>{product.name}</h3>
                     </a>
                   </Link>
                   <p className={`${utilStyles.lightText} ${utilStyles.caption}`}>{product.description}</p>
-                </td>
-                <td className={styles.numberColumn}>
+                </DescriptionColumn>
+                <NumberColumn>
                   <Price className={utilStyles.lightText} price={product.price} />
-                </td>
-                <td width="1%">
+                </NumberColumn>
+                <Td width="1%">
                   <IconButton onClick={() => this.toggleEditModal(product.product_id) }>
                     <EditIcon />
                   </IconButton>
-                </td>
-                <td width="1%">
+                </Td>
+                <Td width="1%">
                   <IconButton onClick={() => this.toggleDeleteModal(product.product_id) }>
                     <DeleteIcon />
                   </IconButton>
-                </td>
-              </tr>
+                </Td>
+              </Tr>
             ))}
-          </tbody>
-        </table>
+          </TBody>
+        </Table>
       </div>
     );
   }

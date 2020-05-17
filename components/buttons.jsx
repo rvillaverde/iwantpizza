@@ -40,7 +40,7 @@ export const SecondaryButton = styled(BasicButton)`
   background-color: white;
   color: var(--primary-500);
   
-  &:active {
+  &:hover, &:active {
     background-color: var(--primary-700);
     border-color: var(--primary-700);
     color: white;

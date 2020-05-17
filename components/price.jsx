@@ -1,12 +1,21 @@
-import styles from './price.module.scss'
 import React from 'react';
 import {connect} from 'react-redux';
 import {changeCurrency} from '../redux/actions/cartActions';
+import styled from "styled-components";
 
 const currencies = {
   usd: { symbol: 'US$', rate: 1 },
   eur: { symbol: '€', rate: 0.9 }
 }
+
+const MyPrice = styled.span`
+  color: var(--primary-700);
+  font-weight: 700;
+
+  @media (max-width: 840px) {
+    font-size: 0.9rem;
+  }
+`
 
 class Price extends React.Component {
   constructor(props) {
@@ -18,7 +27,7 @@ class Price extends React.Component {
                   ? this.props.price * this.props.currency.rate * this.props.quantity
                   : this.props.price * this.props.currency.rate
     return (
-      <span className={`${this.props.className} ${styles.price}`}>{this.props.currency.symbol} { price.toFixed(2) }</span>
+      <MyPrice className={ this.props.className }>{this.props.currency.symbol} { price.toFixed(2) }</MyPrice>
     );
   }
 }

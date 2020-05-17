@@ -8,7 +8,6 @@ const LogoImage = styled.img`
 `
 
 export default function Logo({ home, name }) {
-  console.log(home)
   return (
     <Link as="/" href="/">
       <a href="/">
