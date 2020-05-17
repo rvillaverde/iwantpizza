@@ -1,15 +1,18 @@
 import Link from 'next/link'
-import styles from './logo.module.scss'
+import styled from 'styled-components'
 
-export default function Product({ home, name }) {
+const LogoImage = styled.img`
+  height: auto;
+  width: ${ (props) => props.home ? '24rem' : '20rem' };
+  padding: ${ (props) => props.home ? '2rem' : '1rem' };
+`
+
+export default function Logo({ home, name }) {
+  console.log(home)
   return (
-    <Link href="/">
-      <a>
-        <img
-          src="/images/logo.svg"
-          className={home ? styles.homeHeaderImage : styles.headerImage}
-          alt={name}
-        />
+    <Link as="/" href="/">
+      <a href="/">
+        <LogoImage src="/images/logo.svg" home={home} alt={name} />
       </a>
     </Link>
   )

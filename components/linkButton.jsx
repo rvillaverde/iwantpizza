@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import styled from 'styled-components'
 import { BasicButton, SecondaryButton } from './buttons'
 
 export default function LinkButton(props) {

@@ -1,13 +1,13 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {addedToCart, changeCurrency} from '../redux/actions/cartActions';
+import React from 'react'
+import {connect} from 'react-redux'
+import {addedToCart, changeCurrency} from '../redux/actions/cartActions'
+
+import styled from 'styled-components'
 
 import Link from 'next/link'
-import { SmallButton, BasicButton } from './buttons'
+import { SmallButton } from './buttons'
 import Logo from './logo'
 import {CartIcon} from './icons'
-
-import styles from './appHeader.module.scss'
 
 class AppHeader extends React.Component {
   constructor(props) {
@@ -21,28 +21,26 @@ class AppHeader extends React.Component {
 
   render() {
     return (
-      <header className={styles.header}>
-      <nav className={styles.appNav}>
-        <div className={styles.leftSection}>
-          <SmallButton active={ this.props.currency === 'usd' } 
-            onClick={() => this.handleCurrencyChange('usd')}>
+      <Header>
+      <AppNav>
+        <HeaderSection>
+          <SmallButton active={ this.props.currency === 'usd' } onClick={() => this.handleCurrencyChange('usd')}>
             US$
           </SmallButton>
-          <SmallButton active={ this.props.currency === 'eur' } 
-            onClick={() => this.handleCurrencyChange('eur')}>
+          <SmallButton active={ this.props.currency === 'eur' } onClick={() => this.handleCurrencyChange('eur')}>
             €
           </SmallButton>
-        </div>
-        <div className={styles.rightSection}>
+        </HeaderSection>
+        <HeaderSection>
           <Link href="/cart" as={'/cart'}>
-            <a className={styles.cartLink} data-quantity={this.props.counter}>
-              <i className={styles.icon}><CartIcon /></i>
-            </a>
+            <CartLink data-quantity={this.props.counter}>
+              <i><CartIcon /></i>
+            </CartLink>
           </Link>
-        </div>
-      </nav>
-      <Logo name={this.name} home={this.home}></Logo>
-    </header>
+        </HeaderSection>
+      </AppNav>
+      <Logo name={this.name} home={this.props.home}></Logo>
+    </Header>
     );
   }
 }
@@ -60,5 +58,60 @@ const mapDispatchToProps = {
   changeCurrency: changeCurrency
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppHeader);
+const Header = styled.header`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
+const AppNav = styled.nav`
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.2);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  background-color: var(--primary-500);
+  padding: 0 1rem;
+  width: 100%;
+  z-index: 24;
+
+  button:not(:first-child) {
+    margin-left: .2rem;
+  }
+`
+const HeaderSection = styled.section`
+  display: flex;
+
+  &:last-child {
+    margin-left: auto;
+  }
+`
+const CartLink = styled.a`
+  color:white;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: .2rem .4rem;
+  
+  &::after {
+    align-items: center;
+    background-color: var(--primary-700);
+    border-radius: 50%;
+    bottom: 0;
+    content: attr(data-quantity);
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    font-size: .8rem;
+    font-weight: 500;
+    position: absolute;
+    right: 0;
+    width: 20px;
+  }
+  
+  &[data-quantity='0']::after {
+    content: unset;
+  }
+`
+export default connect(mapStateToProps, mapDispatchToProps)(AppHeader);
