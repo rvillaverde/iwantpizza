@@ -8,14 +8,16 @@ import ProductCard from "./productCard";
 
 const mockStore = configureMockStore([])
 
-jest.mock("./button", () => {
-  return function DummyButton(props) {
-    return (
-      <div data-test-id="add-to-cart-button">
-        {props.children}
-      </div>
-    );
-  };
+jest.mock("./buttons", () => {
+  return {
+    SmallButton: (props) => {
+      return (
+        <div data-test-id="add-to-cart-button">
+          {props.children}
+        </div>
+      );
+    }
+  }
 });
 
 jest.mock("./price", () => {

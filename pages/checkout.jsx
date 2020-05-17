@@ -4,7 +4,7 @@ import Router from 'next/router'
 
 import {checkout, changeCurrency} from '../redux/actions/cartActions';
 
-import Button from '../components/button'
+import { BasicButton, SecondaryButton } from '../components/buttons'
 import CartTable from '../components/cartTable'
 import Layout from '../components/layout'
 
@@ -98,12 +98,12 @@ class Checkout extends React.Component {
             </form>
           </div>
           <div className={utilStyles.formActions}>
-            <Button size="medium" type="button" id="shipping-button" onClick={this.calculateShipping} secondary disabled={!this.state.postalCode}>
+            <SecondaryButton type="button" id="shipping-button" onClick={this.calculateShipping} disabled={!this.state.postalCode}>
               Calculate shipping
-            </Button>
-            <Button type="submit" form="orderForm" size="medium" disabled={this.state.loading}>
+            </SecondaryButton>
+            <BasicButton type="submit" form="orderForm" disabled={this.state.loading}>
               Confirm
-            </Button>
+            </BasicButton>
           </div>
         </div>
       </Layout>

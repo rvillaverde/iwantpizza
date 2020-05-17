@@ -3,7 +3,8 @@ import React from 'react';
 import { editProduct, deleteProduct } from '../lib/products'
 
 import Link from 'next/link'
-import Button from './button'
+import { BasicButton, SecondaryButton, IconButton } from './buttons'
+import LinkButton from './linkButton'
 import Modal from './modal'
 import Price from './price'
 import ProductForm from './productForm'
@@ -24,12 +25,12 @@ const DeleteProductModal = ({ open, handler, confirm }) => (
       </p>
     </div>
     <div className={utilStyles.modalActions}>
-      <Button size="medium" type="button" secondary onClick={ () => handler() }>
+      <SecondaryButton type="button" onClick={ () => handler() }>
         Cancel
-      </Button>
-      <Button size="medium" type="button" onClick={ confirm }>
+      </SecondaryButton>
+      <BasicButton type="button" onClick={ confirm }>
         Delete
-      </Button>
+      </BasicButton>
     </div>
   </Modal>
 );
@@ -40,12 +41,12 @@ const EditProductModal = ({ open, handler, confirm, productId, loading, toggleLo
       <ProductForm id="edit-product-form" productId={ productId } onSubmit={ confirm } toggleLoading={ toggleLoading }></ProductForm>
     </div>
     <div className={utilStyles.modalActions}>
-      <Button size="medium" type="button" secondary onClick={ () => handler() }>
+      <SecondaryButton type="button" secondary onClick={ () => handler() }>
         Cancel
-      </Button>
-      <Button size="medium" type="submit" form="edit-product-form">
+      </SecondaryButton>
+      <BasicButton type="submit" form="edit-product-form">
         Save
-      </Button>
+      </BasicButton>
     </div>
   </Modal>
 )
@@ -108,9 +109,9 @@ class ProductList extends React.Component {
                 <h2 className={`${utilStyles.headingMd} ${utilStyles.colorPrimary700}`}>Products</h2>
               </td>
               <td className={styles.actionsColumn} colSpan='3'>
-                <Button size="medium" href="/products/new">
+                <LinkButton href="/products/new">
                   New product
-                </Button>
+                </LinkButton>
               </td>
             </tr>
           </thead>
@@ -136,14 +137,14 @@ class ProductList extends React.Component {
                   <Price className={utilStyles.lightText} price={product.price} />
                 </td>
                 <td width="1%">
-                  <Button size="small" icon onClick={() => this.toggleEditModal(product.product_id) }>
+                  <IconButton onClick={() => this.toggleEditModal(product.product_id) }>
                     <EditIcon />
-                  </Button>
+                  </IconButton>
                 </td>
                 <td width="1%">
-                  <Button size="small" icon onClick={() => this.toggleDeleteModal(product.product_id) }>
+                  <IconButton onClick={() => this.toggleDeleteModal(product.product_id) }>
                     <DeleteIcon />
-                  </Button>
+                  </IconButton>
                 </td>
               </tr>
             ))}

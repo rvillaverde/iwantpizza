@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from './button'
+import { SecondaryButton, BasicButton } from './buttons'
 import Modal from './modal'
 import ProductForm from './productForm'
 
@@ -12,12 +12,12 @@ const EditProductModal = ({ open, handler, confirm, productId, loading }) => (
       <ProductForm id="edit-product-form" productId={ productId } onSubmit={ confirm }></ProductForm>
     </div>
     <div className={utilStyles.modalActions}>
-      <Button size="medium" type="button" secondary onClick={ () => handler() }>
+      <SecondaryButton type="button" onClick={ () => handler() }>
         Cancel
-      </Button>
-      <Button size="medium" type="submit" form="edit-product-form">
+      </SecondaryButton>
+      <BasicButton type="submit" form="edit-product-form">
         Save
-      </Button>
+      </BasicButton>
     </div>
   </Modal>
 )

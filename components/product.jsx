@@ -4,7 +4,7 @@ import {addToCart} from '../redux/actions/cartActions';
 
 import styled from "styled-components";
 
-import Button from './button'
+import { BasicButton } from './buttons'
 import Price from './price'
 
 import utilStyles from '../styles/utils.module.scss'
@@ -32,9 +32,9 @@ class Product extends React.Component {
           <h1 className={`${utilStyles.headingLg} ${styles.productTitle}`}>{product.name}</h1>
           <p className={`${utilStyles.lightText} ${utilStyles.body}`}>{product.description}</p>
           <StyledPrice price={product.price} />
-          <Button size="medium" onClick={() => this.props.addToCart(product.product_id) }>
+          <BasicButton type="button" onClick={() => this.props.addToCart(product.product_id) }>
             Add to cart
-          </Button>
+          </BasicButton>
         </div>
       </div>
     );

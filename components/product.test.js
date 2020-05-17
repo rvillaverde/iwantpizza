@@ -8,14 +8,16 @@ import Product from "./product";
 
 const mockStore = configureMockStore([])
 
-jest.mock("./button", () => {
-  return function DummyButton(props) {
-    return (
-      <div data-test-id="add-to-cart-button">
-        {props.children}
-      </div>
-    );
-  };
+jest.mock("./buttons", () => {
+  return {
+    BasicButton: (props) => {
+      return (
+        <div data-test-id="add-to-cart-button">
+          {props.children}
+        </div>
+      );
+    }
+  }
 });
 
 jest.mock("./price", () => {

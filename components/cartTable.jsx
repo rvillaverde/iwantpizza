@@ -5,7 +5,7 @@ import {addToCart, updateCartItem, deleteCartItem} from '../redux/actions/cartAc
 import styled from "styled-components";
 
 import Link from 'next/link'
-import Button from './button'
+import { IconButton } from './buttons'
 import Price from './price'
 import {DeleteIcon} from './icons'
 
@@ -43,9 +43,9 @@ class CartTable extends React.Component {
             <tr key={product.product_id}>
               { this.props.editable &&
                 <td width="1%">
-                  <Button size="small" icon onClick={() => this.props.deleteCartItem(product.product_id) }>
+                  <IconButton type="button" onClick={() => this.props.deleteCartItem(product.product_id) }>
                     <DeleteIcon />
-                  </Button>
+                  </IconButton>
                 </td>
               }
               <td className={styles.imageColumn} width="10%">

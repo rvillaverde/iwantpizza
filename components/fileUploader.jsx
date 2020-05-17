@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react'
+import React, { useCallback } from 'react'
 import {useDropzone} from 'react-dropzone'
 import styled from 'styled-components'
 import utilStyles from '../styles/utils.module.scss'
@@ -41,10 +41,7 @@ const Container = styled.div`
 `;
 
 export default function FileUploader({ onChange, name }) {
-  const [fileImage, setFileImage] = useState([])
-
   const handleDrop = useCallback(acceptedFiles => {
-    if (acceptedFiles.length) setFileImage(URL.createObjectURL(acceptedFiles[0]))
     if (acceptedFiles.length) onChange(acceptedFiles[0])
   }, [])
 

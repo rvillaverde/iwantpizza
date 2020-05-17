@@ -1,7 +1,7 @@
 import React from 'react'
 import Router from 'next/router'
 
-import Button from '../../components/button'
+import { BasicButton } from '../../components/buttons'
 import Layout from '../../components/layout'
 import ProductForm from '../../components/productForm'
 
@@ -32,9 +32,9 @@ class NewProduct extends React.Component {
             <ProductForm id="new-product-form" onSubmit={ this.newProduct }></ProductForm>
           </div>
           <div className={utilStyles.formActions}>
-            <Button type="submit" form="new-product-form" size="medium" disabled={this.state.loading}>
+            <BasicButton type="submit" form="new-product-form" disabled={this.state.loading}>
               Save
-            </Button>
+            </BasicButton>
           </div>
         </div>
       </Layout>

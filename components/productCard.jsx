@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {addToCart} from '../redux/actions/cartActions';
 
 import Link from 'next/link'
-import Button from './button'
+import {SmallButton} from './buttons'
 import Price from './price'
 
 import utilStyles from '../styles/utils.module.scss'
@@ -31,9 +31,9 @@ class ProductCard extends React.Component {
         </Link>
         <div className={cardStyles.cardActions}>
           <Price price={product.price} />
-          <Button size="small" onClick={() => this.props.addToCart(product.product_id) }>
+          <SmallButton type="button" onClick={() => this.props.addToCart(product.product_id) }>
             Add to cart
-          </Button>
+          </SmallButton>
         </div>
       </li>
     );
