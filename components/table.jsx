@@ -48,8 +48,17 @@ export const TBody = styled.tbody`
   }
 `
 export const TFoot = styled.tfoot`
+  tr {
+    border: none;
+  }
+  tr:first-child td {
+    padding-top: 1rem;
+  }
+  tr:last-child td {
+    padding-bottom: 1rem;
+  }
   td {
-    padding: 1rem;
+    padding: .5rem;
 
     &:first-child {
       padding-right: .5rem;
