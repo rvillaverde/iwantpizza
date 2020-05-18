@@ -7,8 +7,8 @@ import {checkout, changeCurrency} from '../redux/actions/cartActions';
 import { BasicButton, SecondaryButton } from '../components/buttons'
 import CartTable from '../components/cartTable'
 import Layout from '../components/layout'
+import { CardLarge } from '../components/card'
 
-import cardStyles from '../styles/cards.module.scss'
 import formStyles from '../styles/forms.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 import getShippingFee from '../lib/shipping';
@@ -54,11 +54,11 @@ class Checkout extends React.Component {
     return (
       <Layout>
         <div className={utilStyles.container}>
-          <div className={cardStyles.cardLarge}>
+          <CardLarge>
             <CartTable products={ this.props.cart.items } shippingFee={ this.state.shippingFee }></CartTable>
-          </div>
+          </CardLarge>
 
-          <div className={cardStyles.cardLarge}>
+          <CardLarge>
             <form id="orderForm" onSubmit={this.newOrder}>
               <div className={formStyles.formTitle}>
                 <h2 className={`${utilStyles.colorPrimary700} ${utilStyles.headingMd}`}>Personal information</h2>
@@ -96,7 +96,7 @@ class Checkout extends React.Component {
                 </div>
               </div>
             </form>
-          </div>
+          </CardLarge>
           <div className={utilStyles.formActions}>
             <SecondaryButton type="button" id="shipping-button" onClick={this.calculateShipping} disabled={!this.state.postalCode}>
               Calculate shipping

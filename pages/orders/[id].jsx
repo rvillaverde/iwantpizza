@@ -5,9 +5,9 @@ import {changeCurrency} from '../../redux/actions/cartActions';
 import { getOrder } from '../../lib/orders'
 import Layout from '../../components/layout'
 import CartTable from '../../components/cartTable'
+import { CardLarge } from '../../components/card'
 
 import utilStyles from '../../styles/utils.module.scss'
-import cardStyles from '../../styles/cards.module.scss'
 
 class OrderDetail extends React.Component {
   static async getInitialProps ({ store, query }) {
@@ -29,10 +29,10 @@ class OrderDetail extends React.Component {
         </div>
         <div className={`${utilStyles.container}`}>
           <section className={`${utilStyles.flexWrapper}`}>
-            <div className={cardStyles.cardLarge}>
+            <CardLarge>
               <CartTable products={ this.props.order.products } shippingFee={ this.props.order.shipping_fee } order={this.props.order}></CartTable>
-            </div>
-            <div className={`${cardStyles.cardLarge} ${utilStyles.customerInfo}`}>
+            </CardLarge>
+            <CardLarge className={utilStyles.customerInfo}>
               <h3 className={`${utilStyles.headingMd} ${utilStyles.colorPrimary700}`}>{this.props.order.customer.first_name} {this.props.order.customer.last_name}</h3>
               <p className={`${utilStyles.body} ${utilStyles.lightText}`}>{this.props.order.customer.email}</p>
               <p className={`${utilStyles.body} ${utilStyles.lightText}`}>{this.props.order.customer.phone}</p>
@@ -40,7 +40,7 @@ class OrderDetail extends React.Component {
               <h4 className={`${utilStyles.headingSm} ${utilStyles.colorPrimary700}`}>Shipping Address</h4>
               <p className={`${utilStyles.body} ${utilStyles.lightText}`}>{this.props.order.customer.address_line_1} {this.props.order.customer.address_line_2}</p>
               <p className={`${utilStyles.body} ${utilStyles.lightText}`}>{this.props.order.customer.postal_code}, Magical mystery Place</p>
-            </div>
+            </CardLarge>
           </section>
         </div>
       </Layout>

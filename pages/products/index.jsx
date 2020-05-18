@@ -3,8 +3,9 @@ import React from 'react';
 import { getProducts } from '../../lib/products'
 import Layout from '../../components/layout'
 import ProductList from '../../components/productList'
+import { CardLarge } from '../../components/card'
+
 import utilStyles from '../../styles/utils.module.scss'
-import cardStyles from '../../styles/cards.module.scss'
 
 class ProductIndex extends React.Component {
   static async getInitialProps ({ store }) {
@@ -20,9 +21,9 @@ class ProductIndex extends React.Component {
     return (
       <Layout>
         <div className={utilStyles.container}>
-          <div className={cardStyles.cardLarge}>
+          <CardLarge>
             <ProductList products={ this.props.products } />
-          </div>
+          </CardLarge>
         </div>
       </Layout>
     );

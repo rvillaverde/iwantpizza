@@ -1,13 +1,13 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {addToCart} from '../redux/actions/cartActions';
+import { connect } from 'react-redux';
+import { addToCart } from '../redux/actions/cartActions';
 
 import Link from 'next/link'
-import {SmallButton} from './buttons'
+import { SmallButton } from './buttons'
 import Price from './price'
+import { Card, CardMedia, CardPrimary, CardTitle, CardActions } from './card'
 
 import utilStyles from '../styles/utils.module.scss'
-import cardStyles from '../styles/cards.module.scss'
 
 class ProductCard extends React.Component {
   constructor(props) {
@@ -17,25 +17,25 @@ class ProductCard extends React.Component {
   render() {
     const product = this.props.product;
     return (
-      <li className={cardStyles.card} key={product.product_id}>
+      <Card as='li' key={product.product_id}>
         <Link href="/products/[id]" as={`/products/${product.product_id}`}>
           <a>
-            <div className={cardStyles.cardMedia} style={{ backgroundImage: `url(${product.photo_url})` }}></div>
-            <div className={cardStyles.cardPrimary}>
-              <h3 className={`${utilStyles.headingMd} ${cardStyles.cardTitle}`}>{ product.name }</h3>
-              <p className={`${utilStyles.caption} ${utilStyles.lightText}`}>
+            <CardMedia style={{ backgroundImage: `url(${product.photo_url})` }}></CardMedia>
+            <CardPrimary>
+              <CardTitle className={ utilStyles.headingMd }>{ product.name }</CardTitle>
+              <p className={`${ utilStyles.caption } ${ utilStyles.lightText }`}>
                 { product.description }
               </p>
-            </div>
+            </CardPrimary>
           </a>
         </Link>
-        <div className={cardStyles.cardActions}>
+        <CardActions>
           <Price price={product.price} />
           <SmallButton type="button" onClick={() => this.props.addToCart(product.product_id) }>
             Add to cart
           </SmallButton>
-        </div>
-      </li>
+        </CardActions>
+      </Card>
     );
   }
 }

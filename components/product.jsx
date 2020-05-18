@@ -6,9 +6,9 @@ import styled from "styled-components";
 
 import { BasicButton } from './buttons'
 import Price from './price'
+import { CardLarge } from './card'
 
 import utilStyles from '../styles/utils.module.scss'
-import cardStyles from '../styles/cards.module.scss'
 
 import styles from './product.module.scss'
 
@@ -26,7 +26,7 @@ class Product extends React.Component {
   render() {
     const product = this.props.product;
     return (
-      <div className={`${cardStyles.cardLarge} ${styles.productWrapper}`}>
+      <CardLarge className={styles.productWrapper}>
         <div className={styles.productImage} style={{ backgroundImage: `url(${product.photo_url})` }}></div>
         <div className={styles.productInfo}>
           <h1 className={`${utilStyles.headingLg} ${styles.productTitle}`}>{product.name}</h1>
@@ -36,7 +36,7 @@ class Product extends React.Component {
             Add to cart
           </BasicButton>
         </div>
-      </div>
+      </CardLarge>
     );
   }
 }

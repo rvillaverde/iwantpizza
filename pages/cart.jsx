@@ -5,8 +5,8 @@ import {addedToCart, updateCartItem, deleteCartItem} from '../redux/actions/cart
 import Layout from '../components/layout'
 import CartTable from '../components/cartTable'
 import LinkButton from '../components/linkButton'
+import { CardLarge } from '../components/card'
 
-import cardStyles from '../styles/cards.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 
 class Cart extends React.Component {
@@ -18,9 +18,9 @@ class Cart extends React.Component {
     return (
       <Layout>
         <div className={utilStyles.container}>
-          <div className={cardStyles.cardLarge}>
+          <CardLarge>
             <CartTable products={ this.props.cart.items } editable cart></CartTable>
-          </div>
+          </CardLarge>
           <div className={utilStyles.formActions}>
             <LinkButton href="/" secondary>
               Continue shopping

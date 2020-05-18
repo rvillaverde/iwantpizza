@@ -3,8 +3,8 @@ import React from 'react';
 import { getProducts } from '../lib/products'
 import Layout from '../components/layout'
 import ProductCard from '../components/productCard'
+import { CardWrapper } from '../components/card'
 import utilStyles from '../styles/utils.module.scss'
-import cardStyles from '../styles/cards.module.scss'
 
 class Home extends React.Component {
   static async getInitialProps ({ store }) {
@@ -25,26 +25,16 @@ class Home extends React.Component {
         </div>
         <div className={utilStyles.container}>
           <section className={`${utilStyles.headingMd}`}>
-            <ul className={cardStyles.cardWrapper}>
+            <CardWrapper as="ul">
               {products.map(product => (
                 <ProductCard product={product} key={product.product_id}/>
               ))}
-            </ul>
+            </CardWrapper>
           </section>
         </div>
       </Layout>
     );
   }
 }
-
-// const mapStateToProps = state => ({
-//   cart: state.cart
-// });
-
-// const mapDispatchToProps = {
-//   addToCart: addToCart
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 export default Home;
