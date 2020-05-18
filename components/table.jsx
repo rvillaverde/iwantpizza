@@ -53,6 +53,7 @@ export const TFoot = styled.tfoot`
   }
   tr:first-child td {
     padding-top: 1rem;
+    padding-right: 1rem;
   }
   tr:last-child td {
     padding-bottom: 1rem;

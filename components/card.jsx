@@ -23,7 +23,6 @@ export const CardWrapper = styled.div`
 export const CardLarge = styled.div`
   background-color: white;
   overflow: hidden;
-  transition: box-shadow .3s ease-in-out;
   border-radius: 1rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
   cursor: auto;
@@ -31,16 +30,17 @@ export const CardLarge = styled.div`
   &:not(:first-child) {
     margin-top: 1rem;
   }
-`
+  `
 export const Card = styled(CardLarge)`
-&& {
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
-  margin: 0;
-  
-  display: flex;
-  flex-direction: column;
+  && {
+    transition: box-shadow .3s ease-in-out;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+    margin: 0;
+    
+    display: flex;
+    flex-direction: column;
 
   &:hover {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);

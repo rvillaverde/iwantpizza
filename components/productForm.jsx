@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import { getProduct } from '../lib/products'
 import FileUploader from './fileUploader'
+import { FormTitle, FormSection, FormSubsection, FormSubsectionLarge, FieldSet, FormField, FormInput } from './form'
 
-import formStyles from '../styles/forms.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 
 const defaultState = { photoPreview: "/images/placeholder.svg", product: undefined }
@@ -79,43 +79,40 @@ class ProductForm extends React.Component {
   render() {
     return (
       <form id={ this.props.id } onSubmit={ this.handleSubmit }>
-        <div className={formStyles.formTitle}>
+        <FormTitle>
           <h2 className={`${utilStyles.colorPrimary700} ${utilStyles.headingMd}`}>
             { this.props.productId
               ? "Edit Product"
               : "New Product" 
             }
           </h2>
-        </div>
-        <div className={formStyles.section}>
-          <div className={formStyles.subsection}>
+        </FormTitle>
+        <FormSection>
+          <FormSubsection>
             <ImagePreview image={ this.state.photoPreview } />
-          </div>
-          <div className={formStyles.subsectionLarge}>
-            <div className={formStyles.fieldSet}>
-              <div className={formStyles.formField}>
-                <input type="text" name="name" placeholder="Name" required 
-                  defaultValue={this.state.product ? this.state.product.name : ''}
-                  className={formStyles.textField} />
-              </div>
-            </div>
-            <div className={formStyles.fieldSet}>
-              <div className={formStyles.formField}>
-                <input type="text" name="description" placeholder="Description" required 
-                  defaultValue={this.state.product ? this.state.product.description : ''}
-                  className={formStyles.textField} />
-              </div>
-            </div>
-            <div className={formStyles.fieldSet}>
-              <div className={formStyles.formField}>
-                <input type="number" name="price" placeholder="Price" required 
-                  defaultValue={this.state.product ? this.state.product.price : ''}
-                  className={formStyles.textField} />
+          </FormSubsection>
+          <FormSubsectionLarge>
+            <FieldSet>
+              <FormField>
+                <FormInput type="text" name="name" placeholder="Name" required 
+                  defaultValue={this.state.product ? this.state.product.name : ''} />
+              </FormField>
+            </FieldSet>
+            <FieldSet>
+              <FormField>
+                <FormInput type="text" name="description" placeholder="Description" required 
+                  defaultValue={this.state.product ? this.state.product.description : ''} />
+              </FormField>
+            </FieldSet>
+            <FieldSet>
+              <FormField>
+                <FormInput type="number" name="price" placeholder="Price" required 
+                  defaultValue={this.state.product ? this.state.product.price : ''}/>
                 <p className={`${utilStyles.lightText} ${utilStyles.caption}`}>(*) in USD.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+              </FormField>
+            </FieldSet>
+          </FormSubsectionLarge>
+        </FormSection>
         <FileUploader onChange={ this.handlePhotoChange }/>
       </form>
     );

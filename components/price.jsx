@@ -23,7 +23,7 @@ class Price extends React.Component {
   }
 
   render() {
-    const price = this.props.quantity 
+    const price = this.props.quantity >= 0
                   ? this.props.price * this.props.currency.rate * this.props.quantity
                   : this.props.price * this.props.currency.rate
     return (

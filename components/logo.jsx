@@ -3,8 +3,9 @@ import styled from 'styled-components'
 
 const LogoImage = styled.img`
   height: auto;
-  width: ${ (props) => props.home ? '24rem' : '20rem' };
-  padding: ${ (props) => props.home ? '2rem' : '1rem' };
+  width: ${ (props) => props.home ? '20rem' : '18rem' };
+  padding-bottom: ${ (props) => props.home ? '2rem' : '0' };
+  padding-top: 2rem;
 `
 
 export default function Logo({ home, name }) {

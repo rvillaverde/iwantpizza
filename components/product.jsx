@@ -13,9 +13,11 @@ import utilStyles from '../styles/utils.module.scss'
 import styles from './product.module.scss'
 
 const StyledPrice = styled(Price)`
-  display: block;
-  font-size: 2rem;
-  margin: 1rem 0;
+  && {
+    display: block;
+    font-size: 1.8rem;
+    margin: 1rem 0;
+  }
 `;
 
 class Product extends React.Component {
